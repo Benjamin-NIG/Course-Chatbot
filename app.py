@@ -11,11 +11,11 @@ from llama_index.prompts.prompts import SimpleInputPrompt
 #from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 
 
-st.set_page_config(page_title="Chat CourseBot", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title="BCN_4787C ChatBot", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 # st.secrets["db_username"]
 openai.api_key = st.secrets["openai_key"]
 
-st.title("Chat with BCN_4787 CourseBot 💬🦙")
+st.title("Chat with BCN_4787 ChatBot 💬🦙")
 st.info("", icon="📃")
          
 if "messages" not in st.session_state.keys(): # Initialize the chat messages history
@@ -86,7 +86,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
     # return index
 
 def load_data():
-    with st.spinner(text="Loading and indexing the Streamlit docs."):
+    with st.spinner(text="Loading and indexing the Course information."):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
         system_prompt="""You are an expert on the BCN_4787C course content and your job is to answer technical questions.
