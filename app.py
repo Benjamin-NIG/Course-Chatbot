@@ -1,4 +1,4 @@
-import torch
+
 import streamlit as st
 from llama_index import VectorStoreIndex, ServiceContext, Document
 from llama_index.llms import OpenAI
@@ -9,7 +9,7 @@ from llama_index.prompts.prompts import SimpleInputPrompt
 #from llama_index.llms import HuggingFaceLLM
 #from llama_index.embeddings import LangchainEmbedding
 #from langchain.embeddings.huggingface import HuggingFaceEmbeddings
-
+#import torch
 
 st.set_page_config(page_title="BCN_4787C ChatBot", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 # st.secrets["db_username"]
@@ -22,7 +22,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
     st.session_state.messages = [
         {"role": "assistant", "content": "Ask me a question about BCN_4787 Course!"}
     ]
-
+#===== Using llama2 7b from Meta via huggingface (GPU is required)==============================
 # bnb_config = BitsAndBytesConfig(
 #         load_in_4bit=True,
 #         bnb_4bit_use_double_quant=True,
@@ -84,7 +84,10 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
 
     # index = VectorStoreIndex.from_documents(docs, service_context=service_context)
     # return index
+#==========================END HERE========================================
+#==========================================================================
 
+#===== Using gpt 3.5 turbo from openai=====================================
 def load_data():
     with st.spinner(text="Loading and indexing the Course information."):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
